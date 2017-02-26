@@ -8,17 +8,17 @@
 <link href="css/weather-icons-wind.min.css" type="text/css" rel="stylesheet">
 <script src="http://yui.yahooapis.com/3.18.1/build/yui/yui-min.js"></script>
 </head>
-<body background="images.jpg">
+<body>
 
-   <h1>EASY TRIP</h1>
+   <h1>EASY TRIP</h1> 
 
              <div class="search">
                      <input type="text" id="searchlocation"/>
                     <button onclick="myfunction()">search</button>
                     <div class="weatherdata" id="weatherdata"/></div>
              </div>
-             <div class="outlook">
-                <div id="output"; style="display: none;">
+             <div class="outlook" id="outlook" style="display: none;">
+                <div id="output">
 			        <div class="look1" id="city"></div>
 			        <div class="look2" id="temp">
 			        </div>
@@ -26,51 +26,50 @@
 			        <div class="size" id="value1"></div>
 			    </div> 
 			    <div class="forecast">
- 				<div class="foo">
-					        <div id="day2"></div>
-							<i id="b">
-					        </i> 
-							<div  class="frcst-txt" id="text2"></div>
-							<div id="value2"></div>
-				</div>
-				<div class="foo">
-					        <div id="day3"></div>
-							<i id="c">
-					        </i>
-							<div class="frcst-txt" id="text3"></div>
-							<div id="value3"></div>
-				</div>
-				<div class="foo">
-					        <div id="day4"></div>  
-							<i id="d">
-					        </i>
-							<div class="frcst-txt" id="text4"></div> 
-							<div id="value4"></div>
+	 				<div class="foo">
+						        <div id="day2"></div>
+								<i id="a2">
+						        </i> 
+								<div  class="frcst-txt" id="text2"></div>
+								<div id="value2"></div>
 					</div>
 					<div class="foo">
-					        
-							<div id="day5"></div>
-							<i id="e">
-					        </i>  
-							<div class="frcst-txt" id="text5"></div> 
-							<div id="value5"></div>
+						        <div id="day3"></div>
+								<i id="a3">
+						        </i>
+								<div class="frcst-txt" id="text3"></div>
+								<div id="value3"></div>
 					</div>
 					<div class="foo">
-					        <div id="day6"></div> 
-							<i id="f">
-					        </i> 
-							<div class="frcst-txt" id="text6"></div>
-							<div id="value6"></div>
-					</div>
-					<div class="foo">
-					        <div id="day7"></div> 
-							<i id="g">
-					        </i>
-							<div class="frcst-txt" id="text7"></div> 
-							<div id="value7"></div>
-					
-					</div>
-					<div></div>
+						        <div id="day4"></div>  
+								<i id="a4">
+						        </i>
+								<div class="frcst-txt" id="text4"></div> 
+								<div id="value4"></div>
+						</div>
+						<div class="foo">
+						        
+								<div id="day5"></div>
+								<i id="a5">
+						        </i>  
+								<div class="frcst-txt" id="text5"></div> 
+								<div id="value5"></div>
+						</div>
+						<div class="foo">
+						        <div id="day6"></div> 
+								<i id="a6">
+						        </i> 
+								<div class="frcst-txt" id="text6"></div>
+								<div id="value6"></div>
+						</div>
+						<div class="foo">
+						        <div id="day7"></div> 
+								<i id="a7">
+						        </i>
+								<div class="frcst-txt" id="text7"></div> 
+								<div id="value7"></div>
+						
+						</div>
 				</div> 
 			</div>
 		</div>
@@ -81,6 +80,7 @@
         var textbox;
         var woeid; 
         var res;
+         var weather_icons_map={"Sunny":"wi wi-day-sunny","Partly Cloudy":"wi wi-cloudy","Mostly Cloudy":"wi wi-day-cloudy","Rainy":"wi  wi-day-rain","Mostly Sunny":"wi wi-sunrise" }
         function myfunction()
         {
            textbox=document.getElementById("searchlocation").value;
@@ -105,84 +105,23 @@
                  document.getElementById("value1").innerHTML =
                  r.query.results.channel.item.forecast[0].high+"/"+r.query.results.channel.item.forecast[0].low;
 
-
-
-               	 
-                 document.getElementById("day2").innerHTML=
-                 r.query.results.channel.item.forecast[1].day;
-                 document.getElementById("day3").innerHTML =
-                 r.query.results.channel.item.forecast[2].day;
-                 document.getElementById("day4").innerHTML=
-                 r.query.results.channel.item.forecast[3].day;
-                 document.getElementById("day5").innerHTML=
-                 r.query.results.channel.item.forecast[4].day;
-                 document.getElementById("day6").innerHTML =
-                 r.query.results.channel.item.forecast[5].day;
-                 document.getElementById("day7").innerHTML =
-                 r.query.results.channel.item.forecast[6].day;
-
-
-
-
-                  var weather_icons_map={"Sunny":"wi wi-day-sunny","Partly Cloudy":"wi wi-cloudy","Mostly Cloudy":"wi wi-day-cloudy","Rainy":"wi  wi-day-rain","Mostly Sunny":"wi wi-sunrise" };
-
-
-   
-
-
+                 for(var i=1;i<=6;i++){
+                 	document.getElementById("day"+(i+1)).innerHTML=
+                 r.query.results.channel.item.forecast[i].day;
+                 document.getElementById("text"+(i+1)).innerHTML =
+                 r.query.results.channel.item.forecast[i].text;
+                 document.getElementById("text"+(i+1)).setAttribute("title", r.query.results.channel.item.forecast[i].text );
+                 document.getElementById("a"+(i+1)).className=weather_icons_map[r.query.results.channel.item.forecast[i].text]
+               
                  
-                 document.getElementById("text2").innerHTML =
-                 r.query.results.channel.item.forecast[1].text;
-                 document.getElementById("text2").setAttribute("title", r.query.results.channel.item.forecast[1].text );
-
-				 document.getElementById("text3").innerHTML =
-                 r.query.results.channel.item.forecast[2].text;
-                 document.getElementById("text3").setAttribute("title", r.query.results.channel.item.forecast[2].text );
-
-                 document.getElementById("text4").innerHTML =
-                 r.query.results.channel.item.forecast[3].text;
-                 document.getElementById("text4").setAttribute("title", r.query.results.channel.item.forecast[3].text );
-
-                 document.getElementById("text5").innerHTML =
-                 r.query.results.channel.item.forecast[4].text;
-                 document.getElementById("text5").setAttribute("title", r.query.results.channel.item.forecast[4].text );
-
-				 document.getElementById("text6").innerHTML =
-                 r.query.results.channel.item.forecast[5].text;
-                document.getElementById("text6").setAttribute("title", r.query.results.channel.item.forecast[5].text );
-
-                 document.getElementById("text7").innerHTML =
-                 r.query.results.channel.item.forecast[6].text;
-                 document.getElementById("text7").setAttribute("title", r.query.results.channel.item.forecast[6].text );
-
-
                 
-                 document.getElementById("b").className=weather_icons_map[r.query.results.channel.item.forecast[1].text]
-                 document.getElementById("c").className=weather_icons_map[r.query.results.channel.item.forecast[2].text]
-                 document.getElementById("d").className=weather_icons_map[r.query.results.channel.item.forecast[3].text]
-                 document.getElementById("e").className=weather_icons_map[r.query.results.channel.item.forecast[4].text]
-                 document.getElementById("f").className=weather_icons_map[r.query.results.channel.item.forecast[5].text]
-                 document.getElementById("g").className=weather_icons_map[r.query.results.channel.item.forecast[6].text]
-                 
-                 
-                 
-                 
-                 
-                 
-                 document.getElementById("value2").innerHTML=
-                 r.query.results.channel.item.forecast[1].high+"/"+r.query.results.channel.item.forecast[7].low;;
-                 document.getElementById("value3").innerHTML=
-                 r.query.results.channel.item.forecast[2].high+"/"+r.query.results.channel.item.forecast[7].low;;
-                 document.getElementById("value4").innerHTML=
-                 r.query.results.channel.item.forecast[3].high+"/"+r.query.results.channel.item.forecast[7].low;;
-                 document.getElementById("value5").innerHTML=
-                 r.query.results.channel.item.forecast[4].high+"/"+r.query.results.channel.item.forecast[7].low;;
-                 document.getElementById("value6").innerHTML=
-                 r.query.results.channel.item.forecast[5].high+"/"+r.query.results.channel.item.forecast[7].low;;
-                 document.getElementById("value7").innerHTML=
-                 r.query.results.channel.item.forecast[7].high+"/"+r.query.results.channel.item.forecast[7].low;
+                 document.getElementById("value"+(i+1)).innerHTML=
+                 r.query.results.channel.item.forecast[i].high+"/"+r.query.results.channel.item.forecast[i].low;
+
+
+                 }
   				 
-  				 document.getElementById("output").style.display="block"
+  				 document.getElementById("outlook").style.display="block"
 
 				}else
                         {
