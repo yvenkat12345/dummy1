@@ -1,0 +1,7 @@
+ACCEPT           text/html, application/xhtml+xml, image/jxr, */*
+ACCEPT_ENCODING  gzip, deflate
+ACCEPT_LANGUAGE  en-IN,en;q=0.5
+CONNECTION       Keep-Alive
+HOST             www.whatismybrowser.com
+REFERER          https://www.bing.com/
+USER_AGENT       Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.79 Safari/537.36 Edge/14.14393

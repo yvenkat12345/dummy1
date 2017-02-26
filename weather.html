@@ -1,0 +1,8 @@
+select title, units.temperature, item.forecast
+from weather.forecast
+where woeid in (select woeid from geo.places where text="Brisbane, Australia")
+and u = 'C'
+limit 5
+|
+sort(field="item.forecast.date", descending="false")
+;

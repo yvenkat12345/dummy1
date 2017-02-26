@@ -1,0 +1,68 @@
+html{
+	width:100%;
+
+   }
+
+
+
+
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('fonts/glyphicons-halflings-regular.eot');
+  src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+body{
+background-size:  100%;                      /* <------ */
+background-repeat:   no-repeat;
+}
+h1{
+color:red;
+}
+.search{
+	margin:0 auto;
+	width:270px;
+    text-align: center;
+}
+.foo{
+    padding: 12px;
+	box-sizing: border-box;
+	text-align: center;	
+	letter-spacing: normal;
+	display: inline-block;
+	width: 16.6666%;
+	overflow:hidden; 
+
+
+}
+.look2{
+	
+  font-size: 80px;
+  text-align: center;
+}
+.look1{
+	font-size: 38px;
+	text-align: center;
+}
+.look3
+{
+	font-size: 25px;
+	text-align: center;
+}
+.size{
+	font-size: 25px;
+	text-align: center;
+}
+.outlook{
+	width:33%;
+	border:1px solid black;
+}
+.forecast{
+	letter-spacing: -4px;
+	white-space: nowrap;
+
+}
+.frcst-txt{
+	overflow:hidden;
+	text-overflow: ellipsis;
+}
